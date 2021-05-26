@@ -2,10 +2,6 @@ import PySimpleGUI as sg
 from projeto_calculadora import Calculadora
 
 
-
-
-
-
 #Vamos Criar uma Classe que vai conter nosso app
 class App():
     def __init__(self):
