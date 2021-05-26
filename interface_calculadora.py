@@ -5,7 +5,7 @@ from projeto_calculadora import Calculadora
 class App():
     def __init__(self):
         self.theme = sg.theme('Reddit')
-        self.window = sg.Window('PyCalculator',layout=layout,margins=(0,0),resizable=True, return_keyboard_events=False)
+        self.window = sg.Window('PyCalculator',layout=layout,margins=(0,0),resizable=True, return_keyboard_events=False, size=(600,400))
         self.result = 0
         self.oper = ''
         self.window.read(timeout=1)
