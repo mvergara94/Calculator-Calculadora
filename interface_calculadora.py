@@ -13,7 +13,6 @@ class App():
             for button in layout[i]:
                 button.expand(expand_x = True, expand_y = True)
 
-
     ## Aqui serão definidas as funçoes do nosso menu_layout
     def menu(self):
         sg.popup('About','Just an example','Contact me')
@@ -42,7 +41,7 @@ class App():
 
             self.evento_do_clear(event)
 
-            self.evenetos_do_backarrow(event)
+            self.eventos_do_backarrow(event)
 
             self.eventos_dos_operadores(event)
 
@@ -51,72 +50,21 @@ class App():
             self.menu()
 
     def eventos_dos_numeros(self,event):
-        if event in ('-ONE-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='1')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '1')
+        codigos_dos_eventos = {'-ONE-': '1', '-TWO': '2', '-THREE-': '3', '-FOUR-': '4', '-FIVE-': '5',
+                               '-SIX-': '6', '-SEVEN-': '7', '-EIGHT': '8', '-NINE-': '9', '-ZERO-': '10'}
 
-        if event in ('-TWO-'):
+        if event in (codigos_dos_eventos):
             if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='2')
+                self.window['-BOX-'].Update(value=codigos_dos_eventos[event])
             else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '2')
-
-        if event in ('-THREE-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='3')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '3')
-
-        if event in ('-FOUR-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='4')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '4')
-
-        if event in ('-FIVE-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='5')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '5')
-
-        if event in ('-SIX-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='6')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '6')
-
-        if event in ('-SEVEN-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='7')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '7')
-
-        if event in ('-EIGHT-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='8')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '8')
-
-        if event in ('-NINE-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='9')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '9')
-
-        if event in ('-ZERO-'):
-            if self.values['-BOX-'] == '0':
-                self.window['-BOX-'].update(value='0')
-            else:
-                self.window['-BOX-'].update(value=self.values['-BOX-'] + '0')
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + codigos_dos_eventos[event])
 
     def evento_do_clear(self,event):
         if event in ('-CLEAR-'):
             self.result = 0
             self.window['-BOX-'].update(value=self.result)
 
-    def evenetos_do_backarrow(self,event):
+    def eventos_do_backarrow(self,event):
         if event in ('-BACKARROW-'):
             self.window['-BOX-'].update(value=self.values['-BOX-'][:-1])
 
@@ -196,4 +144,6 @@ layout =[[sg.Menu(menu_layout)],
           sg.Button('=', font=('Consolas', 20), key='-RESULT-')]
          ]
 App().start()
+'''
 
+'''
