@@ -1,7 +1,6 @@
 import PySimpleGUI as sg
 from projeto_calculadora import Calculadora
 
-
 #Vamos Criar uma Classe que vai conter nosso app
 class App():
     def __init__(self):
@@ -37,114 +36,132 @@ class App():
             if event in (None,'Exit',sg.WIN_CLOSED):
                 break
 
-            if event in('About'):
-                self.menu()
+            self.eventos_do_menu(event)
 
-            if event in ('-ONE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='1')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'1')
+            self.eventos_dos_numeros(event)
 
-            if event in ('-TWO-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='2')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'2')
+            self.evento_do_clear(event)
 
-            if event in ('-THREE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='3')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'3')
+            self.evenetos_do_backarrow(event)
 
-            if event in ('-FOUR-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='4')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'4')
+            self.eventos_dos_operadores(event)
 
-            if event in ('-FIVE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='5')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'5')
+    def eventos_do_menu(self,event):
+        if event in ('About'):
+            self.menu()
 
-            if event in ('-SIX-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='6')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'6')
+    def eventos_dos_numeros(self,event):
+        if event in ('-ONE-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='1')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '1')
 
-            if event in ('-SEVEN-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='7')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'7')
+        if event in ('-TWO-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='2')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '2')
 
-            if event in ('-EIGHT-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='8')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'8')
+        if event in ('-THREE-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='3')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '3')
 
-            if event in ('-NINE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='9')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'9')
+        if event in ('-FOUR-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='4')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '4')
 
-            if event in ('-ZERO-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='0')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-']+'0')
+        if event in ('-FIVE-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='5')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '5')
 
-            if event in ('-CLEAR-'):
-                self.result = 0
-                self.window['-BOX-'].update(value = self.result)
+        if event in ('-SIX-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='6')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '6')
 
-            if event in ('-BACKARROW-'):
-                self.window['-BOX-'].update(value=self.values['-BOX-'][:-1])
+        if event in ('-SEVEN-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='7')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '7')
 
+        if event in ('-EIGHT-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='8')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '8')
 
-            if event in ('-PLUS-'):
-                if self.oper !='':
-                    self.result = self.resulter()
-                else:
-                    self.oper = '+'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value='')
+        if event in ('-NINE-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='9')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '9')
 
-            if event in ('-MINUS-'):
-                if self.oper !='':
-                    self.result = self.resulter()
-                else:
-                    self.oper ='-'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value='')
+        if event in ('-ZERO-'):
+            if self.values['-BOX-'] == '0':
+                self.window['-BOX-'].update(value='0')
+            else:
+                self.window['-BOX-'].update(value=self.values['-BOX-'] + '0')
 
-            if event in ('-DIV-'):
-                if self.oper !='':
-                    self.result = self.resulter()
-                else:
-                    self.oper ='/'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value='')
+    def evento_do_clear(self,event):
+        if event in ('-CLEAR-'):
+            self.result = 0
+            self.window['-BOX-'].update(value=self.result)
 
-            if event in ('-TIMES-'):
-                if self.oper !='':
-                    self.result = self.resulter()
-                else:
-                    self.oper ='*'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value='')
+    def evenetos_do_backarrow(self,event):
+        if event in ('-BACKARROW-'):
+            self.window['-BOX-'].update(value=self.values['-BOX-'][:-1])
 
-            if event in ('-RESULT-'):
+    def eventos_dos_operadores(self,event):
+        if event in ('-PLUS-'):
+            if self.oper != '':
                 self.result = self.resulter()
-                self.window['-BOX-'].update(value=self.result)
-                self.result = 0
-                self.oper = ''
+            else:
+                self.oper = '+'
+                self.result = self.values['-BOX-']
+            self.window['-BOX-'].update(value='')
+
+        if event in ('-MINUS-'):
+            if self.oper != '':
+                self.result = self.resulter()
+            else:
+                self.oper = '-'
+                self.result = self.values['-BOX-']
+            self.window['-BOX-'].update(value='')
+
+        if event in ('-DIV-'):
+            if self.oper != '':
+                self.result = self.resulter()
+            else:
+                self.oper = '/'
+                self.result = self.values['-BOX-']
+            self.window['-BOX-'].update(value='')
+
+        if event in ('-TIMES-'):
+            if self.oper != '':
+                self.result = self.resulter()
+            else:
+                self.oper = '*'
+                self.result = self.values['-BOX-']
+            self.window['-BOX-'].update(value='')
+
+        if event in ('-RESULT-'):
+            self.result = self.resulter()
+            self.window['-BOX-'].update(value=self.result)
+            self.result = 0
+            self.oper = ''
+
+
+
+
 
 
 
