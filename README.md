@@ -11,6 +11,7 @@ Funções implementadas até o momento:
 - Raiz Quadrada
 - Elevar um numero a N.
 
+
 * Funçoes para Conjunto:
 - Soma de um conjunto numérico
 - Média aritmética de um conjunto numérico
